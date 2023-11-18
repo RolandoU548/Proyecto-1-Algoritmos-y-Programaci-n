@@ -17,19 +17,19 @@ int main()
     // cout << oracion;
 
     // Línea de entrada 1 / Posición del radar
-    float x, y;
+    float x = 3, y = -5;
     cout << "Ingrese la posición del radar: ";
     cin >> x >> y;
     // Línea de entrada 2 / Cantidad de elementos en el mapa / de 1 a 3
-    // int n;
-    // cout << "Ingrese la cantidad de elementos: ";
-    // cin >> n;
+    int n;
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
     // Línea de entrada 3 / Turnos de la simulación
-    // int m;
-    // cout << "Ingrese los turnos de la simulación: ";
-    // cin >> m;
+    int m;
+    cout << "Ingrese los turnos de la simulación: ";
+    cin >> m;
     // Línea de entrada 4 / Radio de escaneo el radar
-    int r;
+    int r = 3;
     cout << "Ingrese el radio de escaneo del radar: ";
     cin >> r;
     // Líneas de entrada n / Posición inicial de las entidades marinas
@@ -40,64 +40,41 @@ int main()
     if ((xi - x) * (xi - x) + (yi - y) * (yi - y) <= r * r)
     {
         cout << "Está en el radar" << endl;
-        if (xi == x)
+        if (xi == x && yi > y)
         {
-            if (yi > y)
-            {
-                cout << "Está al norte" << endl;
-            }
-            else
-            {
-                cout << "Está al sur" << endl;
-            }
+            cout << "Está al norte";
         }
-        else if (yi == y)
+        else if (xi == x && yi < y)
         {
-            if (xi > x)
-            {
-                cout << "Está al este" << endl;
-            }
-            else
-            {
-                cout << "Está al oeste" << endl;
-            }
+            cout << "Está al sur" << endl;
         }
-        else
+        else if (yi == y && xi > x)
         {
-            if (yi > y)
-            {
-                if (xi > x)
-                {
-                    cout << "Está al noreste" << endl;
-                }
-                else
-                {
-                    cout << "Está al noroeste" << endl;
-                }
-            }
-            else
-            {
-                if (xi > x)
-                {
-                    cout << "Está al sureste" << endl;
-                }
-                else
-                {
-                    cout << "Está al suroeste" << endl;
-                }
-            }
+            cout << "Está al este" << endl;
+        }
+        else if (yi == y && xi < x)
+        {
+            cout << "Está al oeste" << endl;
+        }
+        else if (yi > y && xi > x)
+        {
+            cout << "Está al noreste" << endl;
+        }
+        else if (yi > y && xi < x)
+        {
+            cout << "Está al noroeste" << endl;
+        }
+        else if (yi < y && xi > x)
+        {
+            cout << "Está al sureste" << endl;
+        }
+        else if (yi < y && xi < x)
+        {
+            cout << "Está al suroeste" << endl;
         }
     }
     else
     {
         cout << "No está en el radar" << endl;
     }
-
-    // for (int i = 0; i < m; i++)
-    // {
-    //     int oi;
-    //     float ei;
-    //     cout << "Ingrese dirección y unidades de movimiento" << endl;
-    //     cin >> oi >> ei;
-    // }
 }
