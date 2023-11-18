@@ -31,4 +31,5 @@ int main()
     // Líneas de entrada n / Posición de las entidades marinas
     float xi, yi;
     cin >> xi >> yi;
+    // CUAlquier cosa
 }
