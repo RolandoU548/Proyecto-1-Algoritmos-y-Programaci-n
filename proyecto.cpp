@@ -11,12 +11,6 @@ using namespace std;
 int main()
 {
     SetConsoleOutputCP(CP_UTF8); // Salidas en utf-8
-
-    // metodo para obtener strings con caracteres en blanco
-    // string oracion;
-    // getline(cin, oracion);
-    // cout << oracion;
-
     // Linea de entrada 1 / Posicion del radar
     float x, y;
     cout << "Ingrese la posicion del radar: ";
@@ -40,7 +34,8 @@ int main()
     // Lineas de entrada m / Movimiento de las entidades marinas
     float respaldoX = xi;
     float respaldoY = yi;
-    for (int i = 0; i < m; i++){
+    int respaldoM = 0;
+    for (int i = 1; i <= m; i++){
         int oi;
         float ei;
         cout << "Ingrese la direccion y las unidades que se movera la entidad marina: ";
@@ -114,10 +109,11 @@ int main()
             }
             respaldoX = xi;
             respaldoY = yi;
+            respaldoM = i;
         }
         else
         {
-            cout << "Entidad Marina "<< 1 << " en posición desconocida, última posicion conocida en (" << respaldoX << "," << respaldoY << ")" << " en el turno " << 1 << endl;
+            cout << "Entidad Marina "<< 1 << " en posición desconocida, última posicion conocida en (" << respaldoX << "," << respaldoY << ")" << " en el turno " << respaldoM << endl;
         }
     }
 }
