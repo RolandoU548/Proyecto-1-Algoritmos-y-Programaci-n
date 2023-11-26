@@ -79,46 +79,45 @@ int main()
         // Escaneo del radar.
         if ((xi - x) * (xi - x) + (yi - y) * (yi - y) <= r * r)
         {
-            cout << "A " << pow((xi-x)*(xi-x) + (yi-y)*(yi-y), 1.0f/2.0f) << " unidades de distancia" << endl;
+            cout << "Entidad Marina " << 1 << " detectada a " << pow((xi-x)*(xi-x) + (yi-y)*(yi-y), 1.0f/2.0f) << " unidades de distancia y con orientación ";
             if (xi == x && yi > y)
             {
-                cout << "Esta al norte / 1" << endl;
+                cout << "1 /Esta al norte" << endl;
             }
             else if (yi > y && xi > x)
             {
-                cout << "Esta al noreste / 2" << endl;
+                cout << "2 /Esta al noreste" << endl;
             }
             else if (yi == y && xi > x)
             {
-                cout << "Esta al este / 3" << endl;
+                cout << "3 /Esta al este" << endl;
             }
             else if (yi < y && xi > x)
             {
-                cout << "Esta al sureste / 4" << endl;
+                cout << "4 /Esta al sureste" << endl;
             }
             else if (xi == x && yi < y)
             {
-                cout << "Esta al sur / 5" << endl;
+                cout << "5 /Esta al sur" << endl;
             }
             else if (yi < y && xi < x)
             {
-                cout << "Esta al suroeste / 6" << endl;
+                cout << "6 /Esta al suroeste" << endl;
             }
             else if (yi == y && xi < x)
             {
-                cout << "Esta al oeste / 7" << endl;
+                cout << "7 /Esta al oeste" << endl;
             }
             else if (yi > y && xi < x)
             {
-                cout << "Esta al noroeste / 8" << endl;
+                cout << "8 /Esta al noroeste" << endl;
             }
             respaldoX = xi;
             respaldoY = yi;
         }
         else
         {
-            cout << "No esta en el radar" << endl;
-            cout << "Ultima posicion conocida en (" << respaldoX << "," << respaldoY << ")" << endl;
+            cout << "Entidad Marina "<< 1 << " en posición desconocida, última posicion conocida en (" << respaldoX << "," << respaldoY << ")" << " en el turno " << 1 << endl;
         }
     }
 }
