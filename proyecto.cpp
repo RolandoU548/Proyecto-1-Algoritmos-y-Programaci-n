@@ -1,7 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
 #include <math.h>
-#include <windows.h>
 using namespace std;
 
 // Formula para calcular si una entidad marina esta en el escaner
@@ -10,15 +8,14 @@ using namespace std;
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8); // Salidas en utf-8
     // Linea de entrada 1 / Posicion del radar
     float x, y;
     cout << "Ingrese la posicion del radar: ";
     cin >> x >> y;
     // Linea de entrada 2 / Cantidad de elementos en el mapa / de 1 a 3
-    // int n;
-    // cout << "Ingrese la cantidad de elementos: ";
-    // cin >> n;
+    int n;
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
     // Linea de entrada 3 / Turnos de la simulacion
     int m;
     cout << "Ingrese los turnos de la simulacion: ";
