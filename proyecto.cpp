@@ -92,25 +92,20 @@ int main()
 {
     // Linea de entrada 1 / Posicion del radar
     float x, y;
-    cout << "Ingrese la posicion del radar: ";
     cin >> x >> y;
     // Linea de entrada 2 / Cantidad de elementos en el mapa / de 1 a 3
     int n;
-    cout << "Ingrese la cantidad de elementos: ";
     cin >> n;
     // Linea de entrada 3 / Turnos de la simulacion
     int m;
-    cout << "Ingrese los turnos de la simulacion: ";
     cin >> m;
     // Linea de entrada 4 / Radio de escaneo el radar
     int r;
-    cout << "Ingrese el radio de escaneo del radar: ";
     cin >> r;
     // Lineas de entrada n / Posicion inicial de las entidades marinas
     float x1, y1, x2, y2, x3, y3;
     for (int i = 1; i <= n; i++)
     {
-        cout << "Ingrese la posicion inicial de la entidad marina " << i << ": ";
         switch (i)
         {
         case 1:
@@ -134,7 +129,6 @@ int main()
         {
             int oi;
             float ei;
-            cout << "Ingrese la direccion y las unidades que se movera la entidad marina: ";
             cin >> oi >> ei;
             switch (entidad)
             {
