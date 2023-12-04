@@ -6,8 +6,9 @@ using namespace std;
 // (x0-xr)*(x0-xr) + (y0-yr)*(y0-yr) = r*r
 // xr,yr= Posicion del radar; x0,y0 = Posicion de la entidad marina; r = Radio que cubre el radar
 
-void cambiarCoordenada(float &xi, float &yi, int &oi, float &ei)
+void cambiarCoordenadas(float &xi, float &yi, int &oi, float &ei)
 {
+    // Mover la entidad en funcion de la direccion y las unidades dadas
     switch (oi)
     {
     case 1:
@@ -43,8 +44,10 @@ void cambiarCoordenada(float &xi, float &yi, int &oi, float &ei)
 
 void escanearRadar(float &xi, float &yi, int &oi, float &ei, float &x, float &y, int &r, int &entidad, int &turno, float &respaldoX, float &respaldoY, int &respaldoM)
 {
+    // Verificar si la entidad esta dentro del radio de escaneo
     if ((xi - x) * (xi - x) + (yi - y) * (yi - y) <= r * r)
     {
+        // Verificar e imprimir a que distancia y con que orientacion esta ubicada la entidad
         if (xi == x && yi > y)
         {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 1" << endl;
@@ -77,6 +80,7 @@ void escanearRadar(float &xi, float &yi, int &oi, float &ei, float &x, float &y,
         {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 8" << endl;
         }
+        // Guardar la ultima posicion y el turno conocido de alguna entidad
         respaldoX = xi;
         respaldoY = yi;
         respaldoM = turno;
@@ -119,34 +123,38 @@ int main()
             break;
         }
     }
-    // Lineas de entrada m / Movimiento de las entidades marinas
+    // Declaracion de la ultima posicion y el turno conocido de alguna entidad
     float respaldoX1 = x1, respaldoX2 = x2, respaldoX3 = x3;
     float respaldoY1 = y1, respaldoY2 = y2, respaldoY3 = y3;
     int respaldoM1 = 0, respaldoM2 = 0, respaldoM3 = 0;
+    // Bucle para cada turno
     for (int turno = 1; turno <= m; turno++)
     {
+        // Bucle para cada entidad
         for (int entidad = 1; entidad <= n; entidad++)
         {
+            // Lineas de entrada m / Movimiento de las entidades marinas
             int oi;
             float ei;
             cin >> oi >> ei;
+            // Verificar que entidad se va a mover
             switch (entidad)
             {
             case 1:
                 // Mover entidad marina
-                cambiarCoordenada(x1, y1, oi, ei);
+                cambiarCoordenadas(x1, y1, oi, ei);
                 // Escaneo del radar.
                 escanearRadar(x1, y1, oi, ei, x, y, r, entidad, turno, respaldoX1, respaldoY1, respaldoM1);
                 break;
             case 2:
                 // Mover entidad marina
-                cambiarCoordenada(x2, y2, oi, ei);
+                cambiarCoordenadas(x2, y2, oi, ei);
                 // Escaneo del radar.
                 escanearRadar(x2, y2, oi, ei, x, y, r, entidad, turno, respaldoX2, respaldoY2, respaldoM2);
                 break;
             case 3:
                 // Mover entidad marina
-                cambiarCoordenada(x3, y3, oi, ei);
+                cambiarCoordenadas(x3, y3, oi, ei);
                 // Escaneo del radar.
                 escanearRadar(x3, y3, oi, ei, x, y, r, entidad, turno, respaldoX3, respaldoY3, respaldoM3);
                 break;
