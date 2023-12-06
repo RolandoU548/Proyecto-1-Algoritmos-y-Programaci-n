@@ -42,7 +42,7 @@ void cambiarCoordenadas(float &xi, float &yi, int &oi, float &ei)
     }
 }
 
-void escanearRadar(float &xi, float &yi, int &oi, float &ei, float &x, float &y, int &r, int &entidad, int &turno, float &respaldoX, float &respaldoY, int &respaldoM)
+bool escanearRadar(float &xi, float &yi, float &x, float &y, int &r, int entidad, int &turno, float &respaldoX, float &respaldoY, int &respaldoM)
 {
     // Verificar si la entidad esta dentro del radio de escaneo
     if ((xi - x) * (xi - x) + (yi - y) * (yi - y) <= r * r)
@@ -84,12 +84,14 @@ void escanearRadar(float &xi, float &yi, int &oi, float &ei, float &x, float &y,
         respaldoX = xi;
         respaldoY = yi;
         respaldoM = turno;
+        return true;
     }
     else if (respaldoM != 0)
     {
-        cout << "Entidad Marina " << entidad << " en posición desconocida, última posicion conocida en (" << respaldoX << "," << respaldoY << ")"
+        cout << "Entidad Marina " << entidad << " en posición desconocida, última posición conocida en (" << respaldoX << "," << respaldoY << ")"
              << " en el turno " << respaldoM << endl;
     }
+    return false;
 }
 
 int main()
@@ -143,22 +145,24 @@ int main()
             case 1:
                 // Mover entidad marina
                 cambiarCoordenadas(x1, y1, oi, ei);
-                // Escaneo del radar.
-                escanearRadar(x1, y1, oi, ei, x, y, r, entidad, turno, respaldoX1, respaldoY1, respaldoM1);
                 break;
             case 2:
                 // Mover entidad marina
                 cambiarCoordenadas(x2, y2, oi, ei);
-                // Escaneo del radar.
-                escanearRadar(x2, y2, oi, ei, x, y, r, entidad, turno, respaldoX2, respaldoY2, respaldoM2);
                 break;
             case 3:
                 // Mover entidad marina
                 cambiarCoordenadas(x3, y3, oi, ei);
-                // Escaneo del radar.
-                escanearRadar(x3, y3, oi, ei, x, y, r, entidad, turno, respaldoX3, respaldoY3, respaldoM3);
                 break;
             }
+        }
+        // Escaneo del radar
+        bool escaneo1 = escanearRadar(x1, y1, x, y, r, 1, turno, respaldoX1, respaldoY1, respaldoM1);
+        bool escaneo2 = escanearRadar(x2, y2, x, y, r, 2, turno, respaldoX2, respaldoY2, respaldoM2);
+        bool escaneo3 = escanearRadar(x3, y3, x, y, r, 3, turno, respaldoX3, respaldoY3, respaldoM3);
+        if (!escaneo1 & !escaneo2 & !escaneo3)
+        {
+            cout << "Profundidades limpias" << endl;
         }
     }
 }
