@@ -6,6 +6,8 @@ using namespace std;
 // (x0-xr)*(x0-xr) + (y0-yr)*(y0-yr) = r*r
 // xr,yr= Posicion del radar; x0,y0 = Posicion de la entidad marina; r = Radio que cubre el radar
 
+bool profundidadesLimpias = true;
+
 void cambiarCoordenadas(float &xi, float &yi, int &oi, float &ei)
 {
     // Mover la entidad en funcion de la direccion y las unidades dadas
@@ -49,48 +51,31 @@ bool escanearRadar(float &xi, float &yi, float &x, float &y, int &r, int entidad
     {
         // Verificar e imprimir a que distancia y con que orientacion esta ubicada la entidad
         if (xi == x && yi > y)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 1" << endl;
-        }
         else if (yi > y && xi > x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 2" << endl;
-        }
         else if (yi == y && xi > x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 3" << endl;
-        }
         else if (yi < y && xi > x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 4" << endl;
-        }
         else if (xi == x && yi < y)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 5" << endl;
-        }
         else if (yi < y && xi < x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 6" << endl;
-        }
         else if (yi == y && xi < x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 7" << endl;
-        }
         else if (yi > y && xi < x)
-        {
             cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 8" << endl;
-        }
         // Guardar la ultima posicion y el turno conocido de alguna entidad
         respaldoX = xi;
         respaldoY = yi;
         respaldoM = turno;
+        profundidadesLimpias = false;
         return true;
     }
     else if (respaldoM != 0)
-    {
         cout << "Entidad Marina " << entidad << " en posición desconocida, última posición conocida en (" << respaldoX << "," << respaldoY << ")"
              << " en el turno " << respaldoM << endl;
-    }
     return false;
 }
 
@@ -163,7 +148,7 @@ int main()
             escaneo2 = escanearRadar(x2, y2, x, y, r, 2, turno, respaldoX2, respaldoY2, respaldoM2);
         if (n > 2)
             escaneo3 = escanearRadar(x3, y3, x, y, r, 3, turno, respaldoX3, respaldoY3, respaldoM3);
-        if (!escaneo1 & !escaneo2 & !escaneo3)
+        if (!escaneo1 & !escaneo2 & !escaneo3 & profundidadesLimpias)
         {
             cout << "Profundidades limpias" << endl;
         }
