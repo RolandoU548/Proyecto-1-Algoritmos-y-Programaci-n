@@ -157,9 +157,12 @@ int main()
             }
         }
         // Escaneo del radar
-        bool escaneo1 = escanearRadar(x1, y1, x, y, r, 1, turno, respaldoX1, respaldoY1, respaldoM1);
-        bool escaneo2 = escanearRadar(x2, y2, x, y, r, 2, turno, respaldoX2, respaldoY2, respaldoM2);
-        bool escaneo3 = escanearRadar(x3, y3, x, y, r, 3, turno, respaldoX3, respaldoY3, respaldoM3);
+        bool escaneo1 = false, escaneo2 = false, escaneo3 = false;
+        escaneo1 = escanearRadar(x1, y1, x, y, r, 1, turno, respaldoX1, respaldoY1, respaldoM1);
+        if (n > 1)
+            escaneo2 = escanearRadar(x2, y2, x, y, r, 2, turno, respaldoX2, respaldoY2, respaldoM2);
+        if (n > 2)
+            escaneo3 = escanearRadar(x3, y3, x, y, r, 3, turno, respaldoX3, respaldoY3, respaldoM3);
         if (!escaneo1 & !escaneo2 & !escaneo3)
         {
             cout << "Profundidades limpias" << endl;
