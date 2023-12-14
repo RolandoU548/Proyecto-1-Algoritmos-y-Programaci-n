@@ -51,21 +51,21 @@ bool escanearRadar(float &xi, float &yi, float &x, float &y, int &r, int entidad
     {
         // Verificar e imprimir a que distancia y con que orientacion esta ubicada la entidad
         if (xi == x && yi > y)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 1" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 1" << endl;
         else if (yi > y && xi > x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 2" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 2" << endl;
         else if (yi == y && xi > x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 3" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 3" << endl;
         else if (yi < y && xi > x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 4" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 4" << endl;
         else if (xi == x && yi < y)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 5" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 5" << endl;
         else if (yi < y && xi < x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 6" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 6" << endl;
         else if (yi == y && xi < x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 7" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 7" << endl;
         else if (yi > y && xi < x)
-            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientación 8" << endl;
+            cout << "Entidad Marina " << entidad << " detectada a " << pow((xi - x) * (xi - x) + (yi - y) * (yi - y), 1.0f / 2.0f) << " unidades de distancia y con orientacion 8" << endl;
         // Guardar la ultima posicion y el turno conocido de alguna entidad
         respaldoX = xi;
         respaldoY = yi;
@@ -74,7 +74,7 @@ bool escanearRadar(float &xi, float &yi, float &x, float &y, int &r, int entidad
         return true;
     }
     else if (respaldoM != 0)
-        cout << "Entidad Marina " << entidad << " en posición desconocida, última posición conocida en (" << respaldoX << "," << respaldoY << ")"
+        cout << "Entidad Marina " << entidad << " en posicion desconocida, ultima posicion conocida en (" << respaldoX << "," << respaldoY << ")"
              << " en el turno " << respaldoM << endl;
     return false;
 }
